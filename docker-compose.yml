@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  builder:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: builder
+    container_name: builder
+    volumes:
+      - ./circuitjs1:/circuitjs1
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: web
+    container_name: web
+    ports:
+    - '127.0.0.1:8000:8000'
